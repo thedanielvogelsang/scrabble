@@ -14,14 +14,26 @@ class ScrabbleTest < Minitest::Test
     game1 = Scrabble.new
     game1.score('q')
     result = game1.word
-    assert_equal ['q'], result
+    assert_equal 'Q', result
   end
 
-  def test_it_stores_word_as_array
+  def test_it_upcases_all_letters
+    game1 = Scrabble.new
+    result = game1.score('hello')
+    assert_equal 'HELLO', result
+  end
+
+  def test_sub_points_splits_and_swaps_letters_for_values
     game1 = Scrabble.new
     game1.score('hello')
-    result = game1.word
-    assert_equal ['h', 'e', 'l', 'l','o'], result
+    result = game1.sub_points
+    assert_equal [4, 1, 1, 1, 1], result
+  end
+
+  def test_add_points_works
+    game2 = Scrabble.new
+    result = game2.add_points([1,3])
+    assert_equal 4, result
   end
 
   def test_it_can_score_a_single_letter
