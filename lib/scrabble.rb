@@ -1,7 +1,12 @@
 class Scrabble
+  attr_reader :word
+
+  def initialize
+    @word = nil
+  end
 
   def score(word)
-    1
+    @word = word.split
   end
 
   def point_values
