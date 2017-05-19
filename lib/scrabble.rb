@@ -7,9 +7,11 @@ class Scrabble
 
   def score(word)
     @word = word.upcase!
+    word = sub_points(@word)
+    word = add_points(word)
   end
 
-  def sub_points
+  def sub_points(arg)
     point_values =
       {
         "A"=>1, "B"=>3, "C"=>3, "D"=>2,
@@ -21,7 +23,7 @@ class Scrabble
         "Y"=>4, "Z"=>10
       }
 
-     subbed_points = @word.split(//).map {|letter|
+     subbed_points = arg.split(//).map {|letter|
         letter = point_values[letter]
       }
       return subbed_points
