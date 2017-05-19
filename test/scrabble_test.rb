@@ -17,6 +17,13 @@ class ScrabbleTest < Minitest::Test
     assert_equal ['q'], result
   end
 
+  def test_it_stores_word_as_array
+    game1 = Scrabble.new
+    game1.score('hello')
+    result = game1.word
+    assert_equal ['h', 'e', 'l', 'l','o'], result
+  end
+
   def test_it_can_score_a_single_letter
     skip
     assert_equal 1, Scrabble.new.score("a")

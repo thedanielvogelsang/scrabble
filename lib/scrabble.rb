@@ -6,7 +6,7 @@ class Scrabble
   end
 
   def score(word)
-    @word = word.split
+    @word = word.split(//)
   end
 
   def point_values
